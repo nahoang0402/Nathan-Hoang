@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Object Oriented Programming</title>
+		<script>
+			//default constructor
+			function Card() {
+				this.suit = 'Diamonds';
+				this.face = 'Ace';
+				this.reveal = function() {
+					alert(this.suit + ' ' + this.face);
+				}
+
+				this.setSuit = function (newSuit) {
+					this.suit = newSuit;
+				}
+
+				this.setFace = function (newFace) {
+					this.face = newFace;
+				}
+
+				this.shuffle = function () {
+					var suits = ['Diamonds', 'Hearts', 'Spades', 'Clubs'];
+					var faces = ['Ace', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+
+
+					var numSuit = Math.floor(Math.random() * 4); //0-3
+					var numFace = Math.floor(Math.random() * 14); //0-13
+
+					this.suit = suits[numSuit];
+					this.face = faces[numFace];
+				}
+			}
+
+			var card1 = new Card();
+			var card2 = new Card();
+		</script>
+</head>
+<body>
+	<input type="button" value="Reveal Card 1"
+		onclick="card1.reveal()" />
+	<input type="button" value="Reveal Card 2"
+		onclick="card2.reveal()" />
+
+	<input type="button" value="Reset Suit of Card 2 to Diamond"
+		onclick="card2.setSuit('Diamond')" />
+	<input type="button" value="Reset Face of Card 2 to Ace"
+		onclick="card2.setFace('Ace')" />
+
+	<input type="button" value="Shuffle Card 1"
+		onclick="card1.shuffle()" />
+	<input type="button" value="Shuffle Card 2"
+		onclick="card2.shuffle()" />
+</body>
+</html>

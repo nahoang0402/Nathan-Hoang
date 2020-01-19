@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cookie Testing</title>
+		<script src="cookies.js"></script>
+		<script>
+			window.onload = function() {
+				document.getElementById("cookievalue").innerHTML = "Your cookie value: " + getCookie("myCookieData");
+			}
+			function delCookie(name) {
+				document.cookie = name + '=;expires=Tue, 16 Jan 1993 04:17:94 GMT;';
+			}
+		</script>
+</head>
+<body>
+		<a href="Hour10Part1.html">Back to Cookie Test Page 1</a><br/>
+		<div id="output"></div>
+		<input type="button" value="Delete Cookie"
+		onclick="delCookie" />
+</body>
+</html>
