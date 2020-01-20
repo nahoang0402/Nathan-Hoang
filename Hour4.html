@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Current Date and Time</title>
+		<style>
+			p {font: 14px normal arial, verdana, helvetica;}
+		</style>
+		<script>
+
+			function telltime() {
+			// output example: 6 Jan 2020 12:36
+			var out = "";
+			var now = new Date();
+
+			//date
+			out += now.getDate() + " ";
+			//out = "7"
+
+			//month
+			var monthNumber = now.getMonth();
+
+			if(monthNumber == 0){
+				monthName = "Jan";
+			}
+			else if(monthNumber == 1){
+				monthName = "Feb";
+			}
+			else if(monthNumber == 2){
+				monthName = "March";
+			}
+			else if(monthNumber == 3){
+				monthName = "Apr";
+			}
+			else if(monthNumber == 4){
+				monthName = "May";
+			}
+			else if(monthNumber == 5){
+				monthName = "Jun";
+			}
+			else if(monthNumber == 6){
+				monthName = "Jul";
+			}
+			else if(monthNumber == 7){
+				monthName = "Aug";
+			}
+			else if(monthNumber == 8){
+				monthName = "Sep";
+			}
+			else if(monthNumber == 9){
+				monthName = "Oct";
+			}
+			else if(monthNumber == 10){
+				monthName = "Nov";
+			}
+			else if(monthNumber == 11){
+				monthName = "Dec";
+			}
+
+			out += monthName + " ";
+			//out = "7 Jan"
+
+			//year
+			out += now.getFullYear() + " ";
+			//out = "7 Jan 2020"
+
+			//hours and minutes
+			out += now.getHours() + ":" + now.getMinutes();
+			//out = 7 Jan 2020 7:16
+
+			document.getElementById("div1").innerHTML = out;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			telltime();
+		</script>
+	</body>
+</html>
