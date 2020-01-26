@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Setting the style of page elements</title>
+	<style>
+		span {
+			font-size: 16pt;
+			font-family: arial,helvetica, serif;
+			padding: 10px;
+			border: 3px solid black;
+			}	
+	</style>
+	<script>
+		function toggle() {
+			var myElement = document.getElementById("id1");
+			if(myElement.style.backgroundColor == 'red') {
+				myElement.style.backgroundColor = 'yellow';
+				myElement.style.color = 'black';
+				myElement.style.border = '3px solid black';
+				document.getElementById("id1").style.font = "italic bold 20px Courier,serif";
+				document.getElementById("id1").style.padding = "500px";
+			} else {
+				myElement.style.backgroundColor = 'red';
+				myElement.style.color = 'white';
+				myElement.style.border = '3px dotted blue';
+				document.getElementById("id1").style.padding = "200px";
+			}
+		}
+		window.onload = function() {
+			document.getElementById("btn1").onclick = toggle;
+		}
+	</script>
+</head>
+<body>
+	<span id="id1">Welcome back to my site.</span>
+	<input type="button" id="btn1" value="Changes" />
+</body>
+</html>
