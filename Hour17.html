@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Keywords Grabber</title>
+
+<script src="myAjaxLib.js"></script>
+
+<script>
+
+function display(content) {
+
+document.getElementById("displaydiv").innerHTML = content;
+}
+
+</script>
+
+<script>
+
+function getXMLHttpRequest() {
+
+try {
+
+try {
+
+return new ActiveXObject("Microsoft.XMLHTTP");
+
+}
+
+catch(e) {
+
+return new ActiveXObject("Msxml2.XMLHTTP");
+
+}
+
+}
+
+catch(e) {
+
+return new XMLHttpRequest();
+
+}
+
+}
+
+function doAjax(url, query, callback, reqtype, getxml) {
+
+var myreq = getXMLHttpRequest();
+
+myreq.onreadystatechange = function() {
+
+if(myreq.readyState == 4) {
+
+if(myreq.status == 200) {
+
+var item = myreq.responseText;
+
+if(getxml == 1) item = myreq.responseXML;
+
+eval(callback + '(item)');
+
+}
+
+}
+
+}
+
+if(reqtype.toUpperCase() == "POST") {
+
+requestPOST(url, query, myreq);
+
+} else {
+
+requestGET(url, query, myreq);
+
+}
+
+}
+
+function requestGET(url, query, req) {
+
+var myRandom = parseInt(Math.random()*99999999);
+
+if(query == '') {
+
+var callUrl = url + '?rand=' + myRandom;
+
+} else {
+
+var callUrl = url + '?' + query + '&rand=' + myRandom;
+
+}
+
+req.open("GET", callUrl, true);
+
+req.send(null);
+
+}
+
+function requestPOST(url, query, req) {
+
+req.open("POST", url, true);
+
+req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+req.send(query);
+
+}
+
+window.onload = function(){
+
+document.getElementById("btn1").onclick = function(){
+
+var url = document.getElementById("txt1").value;
+
+doAjax("metatags.php", "url=" + url, "display", "post", 0);
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+http://<input type="text" id="txt1" value="" />
+
+<input type="button" id="btn1" value="Get Keywords" />
+
+<h3>Keywords Received:</h3>
+
+<div id="displaydiv"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hour 19 | PrototypeJS Class</title>
+        <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+
+        <script>
+            var Customer = Class.create({
+            initialize: function(name, email) {
+                this.name = name;
+                this.email = email;
+            },
+
+            change: function(name, email) {
+                this.name = name;
+                this.email = email;
+                alert('Your name has been changed to ' + this.name + ' and your email has been changed to ' + this.email);
+            },
+
+            revealInfo: function(){
+                alert('Your current name is ' + this.name + ' and your email is ' + this.email)
+            }
+            });
+
+            var customer = new Customer('Adam Smith', 'adamsmith@gmail.com');
+
+            function revealInfo(){
+                customer.revealInfo();
+            }
+
+            function change(name, email){
+                customer.change(name, email);
+            }
+
+            function readFormData(input){
+                return document.getElementById(input).value;
+            }
+        </script>
+        
+    </head>
+
+    <body>
+        <input type = "button" value = "Reveal Customer Info" onclick = "revealInfo();"/>
+        <br>
+        <br>
+
+        Name: <input type="text" name="name" id="name"><br>
+        Email: <input type="text" name="email" id="email"><br>
+        <input type="submit" value="Change Name and Email" onclick="change(readFormData('name'), readFormData('email'))">
+    </body>
+    
+</html>
